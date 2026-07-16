@@ -1,8 +1,6 @@
--- hardcoded weil wtf?
-Vhypr = "/home/meow/.config/hypr"
+Vhypr = os.getenv("XDG_CONFIG_HOME") .. "/hypr"
 Vhl = Vhypr .. "/hyprland"
 VhScheme = Vhypr .. "/scheme"
-VcConf = "~/.config/caelestia"
 
 -- default monitor conf
 hl.monitor({
