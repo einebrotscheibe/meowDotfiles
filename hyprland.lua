@@ -1,4 +1,5 @@
-Vhypr = os.getenv("XDG_CONFIG_HOME") .. "/hypr"
+-- os.getenv("XDG_CONFIG_HOME") .. 
+Vhypr = "/home/meow/.config/hypr"
 Vhl = Vhypr .. "/hyprland"
 VhScheme = Vhypr .. "/scheme"
 

@@ -77,7 +77,7 @@ hl.bind(VkbMoveWinToNextPrevWs .. " + left", hl.dsp.window.move({workspace = "r-
 
 --- Window actions
 -- focus next window
-hl.bind(VkbCycleNext, hl.dsp.window.cycle_next())
+hl.bind(VkbCycleNext, hl.dsp.window.cycle_next(), {repeating = true})
 
 -- move windows
 for _,direction in ipairs({"left", "right", "up", "down"}) do
