@@ -14,6 +14,12 @@ hl.window_rule({
     center = true
 })
 
+-- floating for gifs
+hl.window_rule({
+    match = { class = "mpv" },
+    float = true,
+})
+
 -- Float Utilities (Grouped in a loop to keep your config uncluttered)
 local float_classes = {
     "guifetch", "yad", "zenity", "wev", "org\\.gnome\\.FileRoller", 
@@ -60,7 +66,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    match = { class = "Spotify( Free)?|spotify" },
+    match = { class = "Spotify( Free)?|spotify|spotify_player" },
     workspace = "special:music"
 })
 

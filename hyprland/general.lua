@@ -1,4 +1,4 @@
-local scheme = dofile(VhScheme .. "/current.lua")
+local scheme = dofile(VPhScheme .. "/current.lua")
 
 hl.config({
     general = {

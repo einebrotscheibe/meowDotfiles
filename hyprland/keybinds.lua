@@ -1,5 +1,5 @@
 --- Apps
-hl.bind(VkbTerminal, hl.dsp.exec_cmd(Vterminal))
+hl.bind(VkbTerminal, hl.dsp.exec_cmd(Vterminal .. " -D $HOME"))
 hl.bind(VkbBrowser, hl.dsp.exec_cmd(Vbrowser))
 hl.bind(VkbCodeEditor, hl.dsp.exec_cmd(VcodeEditor))
 hl.bind(VkbMDEditor, hl.dsp.exec_cmd(VMDEditor))
@@ -142,8 +142,8 @@ end, {})
 
 -- music workspace
 hl.bind(VkbMusicSpotify, function()
-    if not utils.is_app_open("spotify") then
-        hl.dispatch(hl.dsp.exec_cmd("spotify"))
+    if not utils.is_app_open("spotify_player") then
+        hl.dispatch(hl.dsp.exec_cmd('foot --app-id "spotify_player" spotify_player'))
     else
         hl.dispatch(hl.dsp.workspace.toggle_special("music"), {})
     end
@@ -173,6 +173,10 @@ hl.bind("SUPER + SHIFT + CTRL + L", function()
     end, { timeout = 500, type = "oneshot" })
 end)
 
+--- paste System Info
+hl.bind("SUPER + I", function ()
+    hl.dispatch(hl.dsp.exec_cmd(VPhome .. '/.local/bin/paste-sysinfo'))
+end, {})
 
 --- Testing
 do 

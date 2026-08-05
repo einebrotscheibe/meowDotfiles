@@ -14,8 +14,10 @@ hl.animation({leaf = "windowsOut", enabled = true, speed = 3, bezier = "emphasiz
 hl.animation({leaf = "windowsMove", enabled = true, speed = 6, bezier = "standard"})
 
 hl.animation({leaf = "workspaces", enabled = true, speed = 5, bezier = "standard"})
-hl.animation({leaf = "specialWorkspace", enabled = true, speed = 4, bezier = "specialWorkSwitch", style = "slidefadevert 15%"})
+hl.animation({leaf = "specialWorkspace", enabled = true, speed = 4, bezier = "specialWorkSwitch", style = "slidefadevert -50%"})
 
 hl.animation({leaf = "fade", enabled = true, speed = 6, bezier = "standard"})
 hl.animation({leaf = "fadeDim", enabled = true, speed = 6, bezier = "standard"})
 hl.animation({leaf = "border", enabled = true, speed = 6, bezier = "standard"})
+
+-- TODO fix animations for special Workspaces, when feature is implemented
