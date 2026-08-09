@@ -60,13 +60,3 @@ hl.gesture({
         update = function(dataTable) volume_gesture(-0.25 * dataTable.delta.y) end
     }
 })
-
-
-hl.gesture({
-    fingers = VgestureFingersMore,
-    direction = "horizontal",
-    action = {
-        start = function(dataTable) hl.notification.create({text = "start: delta.y: " .. dataTable.delta.y, duration = 3000}) end,
-        update = function(dataTable) hl.notification.create({text = "start: delta.y: " .. dataTable.delta.y, duration = 3000}) end,
-    }
-})
