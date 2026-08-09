@@ -17,7 +17,7 @@ hl.gesture({
 })
 
 hl.gesture({
-    fingers = VworkspaceSwipeFingers,
+    fingers = VgestureFingers,
     direction = "down",
     action = function ()
         local win = hl.get_active_window()
@@ -34,7 +34,7 @@ hl.gesture({
 })
 
 hl.gesture({
-    fingers = VworkspaceSwipeFingers,
+    fingers = VgestureFingers,
     direction = "up",
     action = function ()
         local win = hl.get_active_window()
@@ -49,4 +49,24 @@ hl.gesture({
         end
     end
 })
--- to add: brightness and volume
+
+-- adjusting volume
+local volume_gesture = function(change) hl.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. math.abs(change) .. "%" .. (change<0 and "-" or "+")) end
+hl.gesture({
+    fingers = VgestureFingersMore,
+    direction = "vertical",
+    action = {
+        start = function(dataTable) volume_gesture(-0.25 * dataTable.delta.y) end,
+        update = function(dataTable) volume_gesture(-0.25 * dataTable.delta.y) end
+    }
+})
+
+
+hl.gesture({
+    fingers = VgestureFingersMore,
+    direction = "horizontal",
+    action = {
+        start = function(dataTable) hl.notification.create({text = "start: delta.y: " .. dataTable.delta.y, duration = 3000}) end,
+        update = function(dataTable) hl.notification.create({text = "start: delta.y: " .. dataTable.delta.y, duration = 3000}) end,
+    }
+})
