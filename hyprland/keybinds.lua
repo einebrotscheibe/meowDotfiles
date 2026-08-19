@@ -9,7 +9,7 @@ hl.bind("SUPER + SHIFT + E", hl.dsp.exec_cmd("nautilus"))
 
 --- Utilities
 hl.bind("Print", hl.dsp.exec_cmd("caelestia screenshot"), {locked = true})
-hl.bind("SUPER + SHIFT + S", hl.dsp.global("caelestia:screenshotFreeze"), {})
+hl.bind("SUPER + SHIFT + S", hl.dsp.global("caelestia:screenshotFreezeClip"), {})
 hl.bind("SUPER + SHIFT + R", hl.dsp.exec_cmd("caelestia record"), {}) -- record sccreen
 hl.bind("SUPER + SHIFT + CTRL + R", hl.dsp.exec_cmd("caelestia record -s"), {}) --record with sound
 hl.bind("SUPER + SHIFT + C", hl.dsp.exec_cmd("hyprpicker -a"), {}) --color picker
