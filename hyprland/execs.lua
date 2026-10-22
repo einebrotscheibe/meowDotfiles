@@ -20,10 +20,4 @@ hl.on("hyprland.start", function ()
 
     --forward bluetooth media commands to MPRIS
     hl.exec_cmd("mpris-proxy")
-
-    --resize and move windows based on matches (e.g. pip)
-    hl.exec_cmd("caelestia resizer -d")
-
-    --start shell
-    hl.exec_cmd("caelestia shell -d")
 end)

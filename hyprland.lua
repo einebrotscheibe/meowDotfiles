@@ -19,3 +19,8 @@ require("hyprland.monitor")
 require("hyprland.rules")
 require("hyprland.scrolling")
 require("scheme.current")
+
+--start shell
+hl.on("hyprland.start", function()
+  hl.exec_cmd("caelestia shell -d")
+end)

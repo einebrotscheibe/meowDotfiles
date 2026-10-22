@@ -28,6 +28,6 @@ hl.config({
 -- Xwayland (saves a bit of RAM, might have to reenable)
 hl.config({
     xwayland = {
-        enabled = false
+        enabled = true
     }
 })

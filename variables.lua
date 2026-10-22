@@ -68,7 +68,7 @@ VkbMoveWindowArrows = "SUPER + SHIFT + CTRL"
 -- Special workspace toggles
 VkbToggleScratchpadWs = "SUPER + S"
 VkbMoveToggleSpecialWs = "SUPER + CTRL + S"
-VkbSystemMonitor = "CTRL + SHIFT + Escape"
+VkbSystemMonitor = "SUPER + Escape"
 VkbMusicSpotify = "SUPER + M"
 VkbTodo = "SUPER + R"
 VkbCommunication = "SUPER + N"
