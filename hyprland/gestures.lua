@@ -16,38 +16,35 @@ hl.gesture({
     action = "workspace"
 })
 
+-- special workspaces on vertical swipes:
+--   up   -> show "special"  | down -> hide "special"
+--   down -> show "music"    | up   -> hide "music"
+-- `shown` is the special workspace to open from a normal workspace,
+-- `hidden` is the one this direction closes again.
+local special_swipe = function(shown, hidden)
+    return function()
+        -- ask the monitor which special workspace is open (nil if none);
+        -- don't rely on the focused window, it can be nil or elsewhere
+        local special = hl.get_active_special_workspace()
+        if not special then
+            hl.dispatch(hl.dsp.workspace.toggle_special(shown))
+        elseif special.name == "special:" .. hidden then
+            hl.dispatch(hl.dsp.workspace.toggle_special(hidden))
+        end
+        -- any other case (e.g. swiping down while "special" is already open) does nothing
+    end
+end
+
 hl.gesture({
     fingers = VgestureFingers,
     direction = "down",
-    action = function ()
-        local win = hl.get_active_window()
-        if win.workspace.id < 0 then
-            if win.workspace.name:match("special:special") then
-                hl.dispatch(hl.dsp.workspace.toggle_special("special"))
-            else
-                hl.dispatch(hl.dsp.workspace.toggle_special("music"))
-            end
-        else 
-            hl.dispatch(hl.dsp.workspace.toggle_special("special"))
-        end
-    end
+    action = special_swipe("special", "music")
 })
 
 hl.gesture({
     fingers = VgestureFingers,
     direction = "up",
-    action = function ()
-        local win = hl.get_active_window()
-        if win.workspace.id < 0 then
-            if win.workspace.name:match("special:special") then
-                hl.dispatch(hl.dsp.workspace.toggle_special("special"))
-            else
-                hl.dispatch(hl.dsp.workspace.toggle_special("music"))
-            end
-        else 
-            hl.dispatch(hl.dsp.workspace.toggle_special("music"))
-        end
-    end
+    action = special_swipe("music", "special")
 })
 
 -- adjusting volume
