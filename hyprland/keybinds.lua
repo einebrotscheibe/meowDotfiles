@@ -111,8 +111,12 @@ hl.bind(VkbCloseWindow, hl.dsp.window.close())
 
 
 --- Special Workspaces
+-- load utils module
+local config_dir = os.getenv("HOME") .. "/.config/hypr/hyprland/"
+local utils = dofile(config_dir .. "utils.lua")
+
 -- Toggle special workspaces
-hl.bind(VkbToggleScratchpadWs, hl.dsp.workspace.toggle_special("special"), {})
+hl.bind(VkbToggleScratchpadWs, function() utils.toggle_special("special") end, {})
 
 -- Toggle move window to scratchpad workspace
 hl.bind(VkbMoveToggleSpecialWs, function()
@@ -128,15 +132,12 @@ hl.bind(VkbMoveToggleSpecialWs, function()
     end
 end)
 
--- load utils module
-local config_dir = os.getenv("HOME") .. "/.config/hypr/hyprland/"
-local utils = dofile(config_dir .. "utils.lua")
 -- sysmon workspace
 hl.bind(VkbSystemMonitor, function()
     if not utils.is_app_open("btop-sysmon") then
         hl.dispatch(hl.dsp.exec_cmd("foot -a btop-sysmon btop"))
     else
-        hl.dispatch(hl.dsp.workspace.toggle_special("sysmon"))
+        utils.toggle_special("sysmon")
     end
 end, {})
 
@@ -145,12 +146,12 @@ hl.bind(VkbMusicSpotify, function()
     if not utils.is_app_open("spotify_player") then
         hl.dispatch(hl.dsp.exec_cmd('foot --app-id "spotify_player" spotify_player'))
     else
-        hl.dispatch(hl.dsp.workspace.toggle_special("music"), {})
+        utils.toggle_special("music")
     end
 end, {})
 
 -- communication workspace
-hl.bind(VkbCommunication, hl.dsp.workspace.toggle_special("communication"), {})
+hl.bind(VkbCommunication, function() utils.toggle_special("communication") end, {})
 
 
 --- Launcher

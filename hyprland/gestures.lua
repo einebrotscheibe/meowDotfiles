@@ -21,15 +21,16 @@ hl.gesture({
 --   down -> show "music"    | up   -> hide "music"
 -- `shown` is the special workspace to open from a normal workspace,
 -- `hidden` is the one this direction closes again.
+local utils = dofile(os.getenv("HOME") .. "/.config/hypr/hyprland/utils.lua")
 local special_swipe = function(shown, hidden)
     return function()
         -- ask the monitor which special workspace is open (nil if none);
         -- don't rely on the focused window, it can be nil or elsewhere
         local special = hl.get_active_special_workspace()
         if not special then
-            hl.dispatch(hl.dsp.workspace.toggle_special(shown))
+            utils.toggle_special(shown)
         elseif special.name == "special:" .. hidden then
-            hl.dispatch(hl.dsp.workspace.toggle_special(hidden))
+            utils.toggle_special(hidden)
         end
         -- any other case (e.g. swiping down while "special" is already open) does nothing
     end

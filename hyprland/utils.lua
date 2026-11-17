@@ -32,4 +32,20 @@ function M.parse_hypr_conf(path)
     return vars
 end
 
+-- Hyprland has only one animation style for all special workspaces, so we
+-- set it right before each toggle. In "slidefadevert X%" the sign of X sets
+-- the direction: negative = slides in from the top, positive = from the bottom.
+local special_anim_direction = {
+    music = "50%", -- from the bottom
+}
+local special_anim_default = "-50%" -- from the top (matches animations.lua)
+
+function M.toggle_special(name)
+    hl.animation({
+        leaf = "specialWorkspace", enabled = true, speed = 4, bezier = "specialWorkSwitch",
+        style = "slidefadevert " .. (special_anim_direction[name] or special_anim_default)
+    })
+    hl.dispatch(hl.dsp.workspace.toggle_special(name))
+end
+
 return M
